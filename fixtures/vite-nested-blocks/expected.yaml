@@ -1,0 +1,7 @@
+presets: [vite]
+alias: x.test
+routes:
+  - port: 3001
+    role: web
+    label: Vite (vite.config)
+advisories: []
