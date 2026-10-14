@@ -19,3 +19,44 @@ jobs:
           cache: false
       - run: make install-nearhost
       - run: make check NEARHOST="$(go env GOPATH)/bin/nearhost"
+
+  # Rebuild index.yaml from the newest main and commit it when it changed.
+  # The commit is made as the nearhost-ci app, which the ruleset on main lets
+  # through. Its push starts this workflow again; that run finds the index
+  # current and commits nothing, so it cannot loop.
+  publish:
+    needs: check
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: publish-index
+      cancel-in-progress: false
+    steps:
+      - uses: actions/create-github-app-token@v3
+        id: app
+        with:
+          client-id: ${{ vars.NH_APP_CLIENT_ID }}
+          private-key: ${{ secrets.NH_APP_PRIVATE_KEY }}
+          permission-contents: write
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ steps.app.outputs.token }}
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+          cache: false
+      - run: make install-nearhost
+      - run: make index NEARHOST="$(go env GOPATH)/bin/nearhost"
+      - name: Commit the index if it changed
+        run: |
+          if git ls-files --error-unmatch index.yaml >/dev/null 2>&1 && git diff --quiet -- index.yaml; then
+            echo "index.yaml is current."
+            exit 0
+          fi
+          git config user.name 'nearhost-ci[bot]'
+          git config user.email '342397698+nearhost-ci[bot]@users.noreply.github.com'
+          git add index.yaml
+          git commit -m 'chore: rebuild the index'
+          git push origin HEAD:main
