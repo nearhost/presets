@@ -1,0 +1,31 @@
+presets: [compose, sail, laravel, vite]
+alias: myapp.test
+others:
+  - name: other
+    loopback: [5174]
+routes:
+  - port: 1025
+    role: ignore
+    label: mailpit (FORWARD_MAILPIT_PORT)
+  - port: 3307
+    role: ignore
+    label: mysql (FORWARD_DB_PORT)
+  - port: 5174
+    role: loopback
+    label: Vite (VITE_PORT)
+  - port: 6379
+    role: ignore
+    label: redis (FORWARD_REDIS_PORT)
+  - port: 8025
+    role: ignore
+    label: mailpit (FORWARD_MAILPIT_DASHBOARD_PORT)
+  - port: 8080
+    role: web
+    label: laravel.test (APP_PORT)
+advisories:
+  - id: loopback-clash
+    message: 'Port 5174 is also forwarded to this machine by project "other". Only one can bind it. Give this project its own port.'
+    snippet: VITE_PORT=5175
+  - id: app-url
+    message: 'APP_URL is "http://localhost". Generated links will use it, so set it to the alias.'
+    snippet: APP_URL=https://myapp.test

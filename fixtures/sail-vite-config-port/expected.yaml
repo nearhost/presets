@@ -1,0 +1,7 @@
+presets: [compose, sail, laravel, vite]
+alias: x.test
+routes:
+  - port: 80
+    role: web
+    label: laravel.test (APP_PORT)
+advisories: []

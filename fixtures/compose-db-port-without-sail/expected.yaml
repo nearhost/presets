@@ -1,0 +1,7 @@
+presets: [compose, sail, laravel, vite]
+alias: x.test
+routes:
+  - port: 3306
+    role: web
+    label: mysql (FORWARD_DB_PORT)
+advisories: []
