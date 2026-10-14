@@ -8,6 +8,7 @@ A preset is a data file that teaches Nearhost about one framework or tool: which
 
 | Preset | Enable as | Applies when |
 |---|---|---|
+| Laravel | `nearhost/laravel` | The project has an `artisan` file |
 | Vite | `nearhost/vite` | A Vite config file exists, or `package.json` depends on `vite` |
 
 ## Adding a preset

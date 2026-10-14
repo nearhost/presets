@@ -1,0 +1,7 @@
+presets: [laravel]
+alias: myapp.test
+routes: []
+advisories:
+  - id: app-url
+    message: 'APP_URL is "". Generated links will use it, so set it to the alias.'
+    snippet: APP_URL=https://myapp.test

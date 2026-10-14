@@ -1,0 +1,13 @@
+schema: 1
+name: laravel
+title: Laravel
+description: Checks that APP_URL matches the project's alias.
+detect: file("artisan")
+
+advisories:
+  - id: app-url
+    when: '!("APP_URL" in env) || env["APP_URL"].trim() != "https://" + alias'
+    message: >-
+      APP_URL is "{{ "APP_URL" in env ? env["APP_URL"].trim() : "" }}".
+      Generated links will use it, so set it to the alias.
+    snippet: APP_URL=https://{{ alias }}

@@ -1,0 +1,4 @@
+presets: [laravel]
+alias: myapp.test
+routes: []
+advisories: []
