@@ -1,0 +1,16 @@
+presets: [vite]
+alias: x.test
+routes:
+  - port: 4321
+    role: web
+    label: Vite (vite.config)
+advisories:
+  - id: allowed-hosts
+    message: 'Vite rejects requests for x.test unless it is in server.allowedHosts.'
+    snippet: |
+      // vite.config.ts
+      export default defineConfig({
+        server: {
+          allowedHosts: ['x.test'],
+        },
+      })

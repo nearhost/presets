@@ -1,0 +1,58 @@
+schema: 1
+name: vite
+title: Vite
+description: Finds the Vite dev server port and checks its host settings.
+detect: file("vite.config.js", "vite.config.ts", "vite.config.mjs", "vite.config.mts", "vite.config.cjs") || pkg("vite")
+
+facts:
+  port:
+    scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
+    regex: '\bserver\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?\bport\s*:\s*(\d+)'
+    as: int
+  allowed_hosts:
+    scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
+    regex: '\bserver\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?\ballowedHosts\s*:\s*\[([^\]]*)\]'
+    as: quoted_list
+  allow_all_hosts:
+    scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
+    regex: '\bserver\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?\ballowedHosts\s*:\s*true'
+    as: bool
+  https:
+    scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
+    regex: '\bhttps\s*:\s*(true|\{)'
+    as: bool
+  reads_vite_port:
+    scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
+    regex: 'VITE_PORT'
+    as: bool
+
+routes:
+  - id: vite-config-port
+    when: facts.port > 0
+    port: facts.port
+    label: Vite (vite.config)
+    web: fallback
+
+advisories:
+  - id: vite-default-port
+    when: >-
+      facts.port == 0
+      && !(facts.reads_vite_port && "VITE_PORT" in env && env["VITE_PORT"].trim() != "")
+    message: Vite will use the default port 5173, which other Vite projects also use. Set server.port in the Vite config so projects can run side by side.
+    snippet: |
+      // vite.config.ts
+      export default defineConfig({
+        server: {
+          port: {{ free_port(5173) }},
+        },
+      })
+  - id: allowed-hosts
+    when: '!facts.https && !facts.allow_all_hosts && !host_in(alias, facts.allowed_hosts)'
+    message: Vite rejects requests for {{ alias }} unless it is in server.allowedHosts.
+    snippet: |
+      // vite.config.ts
+      export default defineConfig({
+        server: {
+          allowedHosts: ['{{ alias }}'],
+        },
+      })

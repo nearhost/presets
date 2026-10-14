@@ -1,0 +1,13 @@
+presets: [vite]
+alias: s.test
+routes: []
+advisories:
+  - id: vite-default-port
+    message: 'Vite will use the default port 5173, which other Vite projects also use. Set server.port in the Vite config so projects can run side by side.'
+    snippet: |
+      // vite.config.ts
+      export default defineConfig({
+        server: {
+          port: 5173,
+        },
+      })
