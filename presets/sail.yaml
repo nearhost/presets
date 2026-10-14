@@ -5,6 +5,7 @@ description: Forwards the Vite dev server that Laravel Sail runs inside its cont
 after: [vite]
 detect: >-
   compose.contains("laravel/sail") || compose.contains("image: sail-")
+  || compose.contains("image: 'sail-") || compose.contains("image: \"sail-")
   || compose.contains("LARAVEL_SAIL")
 compose: ports
 

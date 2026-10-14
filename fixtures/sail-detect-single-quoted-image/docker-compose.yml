@@ -1,0 +1,6 @@
+services:
+  laravel.test:
+    image: 'sail-8.4/app'
+    ports:
+      - '${APP_PORT:-80}:80'
+      - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
