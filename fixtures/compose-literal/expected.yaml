@@ -1,0 +1,12 @@
+presets: [compose]
+routes:
+  - port: 8080
+    role: web
+    label: web
+  - port: 8443
+    role: ignore
+    label: api
+  - port: 9000
+    role: ignore
+    label: api
+advisories: []
