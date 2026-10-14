@@ -1,0 +1,6 @@
+presets: [vite]
+routes:
+  - port: 3002
+    role: web
+    label: Vite (vite.config)
+advisories: []

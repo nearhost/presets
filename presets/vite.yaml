@@ -7,19 +7,19 @@ detect: file("vite.config.js", "vite.config.ts", "vite.config.mjs", "vite.config
 facts:
   port:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
-    regex: '\bserver\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?\bport\s*:\s*(\d+)'
+    regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?(?:\b|[''"])port[''"]?\s*:\s*(\d+)'
     as: int
   allowed_hosts:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
-    regex: '\bserver\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?\ballowedHosts\s*:\s*\[([^\]]*)\]'
+    regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?(?:\b|[''"])allowedHosts[''"]?\s*:\s*\[([^\]]*)\]'
     as: quoted_list
   allow_all_hosts:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
-    regex: '\bserver\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?\ballowedHosts\s*:\s*true'
+    regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?(?:\b|[''"])allowedHosts[''"]?\s*:\s*true'
     as: bool
   https:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
-    regex: '\bhttps\s*:\s*(true|\{)'
+    regex: '(?:\b|[''"])https[''"]?\s*:\s*(true|\{)'
     as: bool
   reads_vite_port:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
