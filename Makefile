@@ -15,8 +15,13 @@ test:
 	$(NEARHOST) preset test fixtures --presets presets
 
 # The index names the last commit that changed presets/, so it changes only
-# when a preset does. CI runs this on main; locally it previews the index.
+# when a preset does, and the files it hashes must be that commit's files.
+# CI runs this on main; locally it previews the index.
 index:
+	@if [ -n "$$(git status --porcelain -- presets)" ]; then \
+		echo "presets/ has changes that are not committed. The index names a commit, so commit them first." >&2; \
+		exit 1; \
+	fi
 	@$(NEARHOST) preset index presets --ref "$$(git log -1 --format=%H -- presets)" > index.yaml.tmp \
 		|| { rm -f index.yaml.tmp; exit 1; }
 	@mv index.yaml.tmp index.yaml
