@@ -1,0 +1,27 @@
+fixtures/sail-detect-single-quoted-image/docker-compose.yml
+  s_4318937e268074::t_48064eedb501c0 1-6
+fixtures/sail-detect-single-quoted-image/expected.yaml
+  s_4318937e268074::t_48064eedb501c0 1-9
+fixtures/sail-detect-double-quoted-image/expected.yaml
+  s_4318937e268074::t_48064eedb501c0 1-9
+fixtures/sail-detect-double-quoted-image/docker-compose.yml
+  s_4318937e268074::t_48064eedb501c0 1-6
+presets/sail.yaml
+  s_4318937e268074::t_7c0d92205c6272 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d3a1551984cf4c5133558cc07e0d888a5d83d4ae",
+  "prompts": {},
+  "sessions": {
+    "s_4318937e268074": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e58675d-fc6e-4a8c-a3d7-7013c171baf1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Edward Coleridge Smith <edcoleridgesmith@gmail.com>"
+    }
+  }
+}
