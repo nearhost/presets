@@ -32,7 +32,7 @@ nearhost preset enable nearhost/vite
 1. Write `presets/<name>.yaml`. `nearhost preset validate presets/<name>.yaml` reports every problem in it.
 2. Add fixtures. A fixture is a directory under `fixtures/` holding sample project files and an `expected.yaml` that names the presets to enable and lists the routes and advisories they should produce. Name presets there without the `nearhost/` prefix.
 3. Run `make check`. It uses the `nearhost` on your `PATH`. To check against the version CI uses, run `make install-nearhost`, which installs it into `$(go env GOPATH)/bin`, then `make check NEARHOST="$(go env GOPATH)/bin/nearhost"`.
-4. Leave `index.yaml` alone. CI rebuilds it on `main` after every merge, naming the last commit that changed `presets/`.
+4. Leave `index.yaml` alone. After a merge that changes a preset, CI opens a pull request, `chore: rebuild the index`, with the new index. Merging it publishes the change.
 
 ## Licence
 
