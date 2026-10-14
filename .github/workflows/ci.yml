@@ -20,7 +20,8 @@ jobs:
       - run: make install-nearhost
       - run: make check NEARHOST="$(go env GOPATH)/bin/nearhost"
 
-  # Rebuild index.yaml from the newest main and commit it when it changed.
+  # Rebuild index.yaml and commit it when it changed, as long as main is still
+  # the commit this run checked.
   # The commit is made as the nearhost-ci app, which the ruleset on main lets
   # through. Its push starts this workflow again; that run finds the index
   # current and commits nothing, so it cannot loop.
@@ -51,6 +52,13 @@ jobs:
       - run: make index NEARHOST="$(go env GOPATH)/bin/nearhost"
       - name: Commit the index if it changed
         run: |
+          # Publish only the commit this run's check passed. When main has
+          # moved on, the run for the newer commit publishes once its own
+          # check passes.
+          if [ "$(git rev-parse HEAD)" != "$GITHUB_SHA" ]; then
+            echo "main has moved past $GITHUB_SHA; the run for the newer commit publishes."
+            exit 0
+          fi
           if git ls-files --error-unmatch index.yaml >/dev/null 2>&1 && git diff --quiet -- index.yaml; then
             echo "index.yaml is current."
             exit 0
