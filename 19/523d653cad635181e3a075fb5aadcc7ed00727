@@ -1,0 +1,113 @@
+fixtures/sail-custom-clash/package.json
+  s_4318937e268074::t_3d988f6f70697d 1-7
+fixtures/laravel-vite-without-sail/package.json
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/compose-db-port-without-sail/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-7
+fixtures/sail-blank-vite-port/.env
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-blank-vite-port/vite.config.js
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-custom/docker-compose.yml
+  s_4318937e268074::t_3d988f6f70697d 1-25
+fixtures/sail-detect-build-context/docker-compose.yml
+  s_4318937e268074::t_3d988f6f70697d 1-6
+fixtures/sail-detect-build-context/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-6
+fixtures/sail-env-vite-port/vite.config.js
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-vite-config-port/package.json
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/vite-env-and-config-without-sail/.env
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/vite-env-and-config-without-sail/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-16
+fixtures/sail-defaults/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-28
+fixtures/sail-blank-vite-port/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-12
+fixtures/sail-all-services/docker-compose.yml
+  s_4318937e268074::t_3d988f6f70697d 1-31
+fixtures/sail-defaults/vite.config.js
+  s_4318937e268074::t_3d988f6f70697d 1-11
+fixtures/laravel-vite-without-sail/vite.config.js
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-custom-clash/artisan
+  s_4318937e268074::t_3d988f6f70697d 1-2
+fixtures/compose-vite-port-without-sail/compose.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-4
+fixtures/sail-custom-clash/vite.config.js
+  s_4318937e268074::t_3d988f6f70697d 1-11
+fixtures/sail-defaults/.env
+  s_4318937e268074::t_3d988f6f70697d 1-3
+fixtures/sail-vite-config-port/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-7
+fixtures/sail-custom/vite.config.js
+  s_4318937e268074::t_3d988f6f70697d 1-11
+fixtures/sail-vite-config-port/vite.config.js
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-vite-config-port/docker-compose.yml
+  s_4318937e268074::t_3d988f6f70697d 1-5
+fixtures/sail-custom/package.json
+  s_4318937e268074::t_3d988f6f70697d 1-7
+fixtures/compose-vite-port-without-sail/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-7
+fixtures/sail-defaults/docker-compose.yml
+  s_4318937e268074::t_3d988f6f70697d 1-25
+fixtures/sail-env-vite-port/.env
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-all-services/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-36
+fixtures/sail-custom/.env
+  s_4318937e268074::t_3d988f6f70697d 1-6
+fixtures/laravel-vite-without-sail/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-6
+fixtures/sail-custom-clash/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-31
+fixtures/laravel-vite-without-sail/.env
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-env-vite-port/docker-compose.yml
+  s_4318937e268074::t_3d988f6f70697d 1-6
+fixtures/compose-db-port-without-sail/compose.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-4
+fixtures/sail-env-vite-port/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-10
+fixtures/sail-custom/artisan
+  s_4318937e268074::t_3d988f6f70697d 1-2
+fixtures/sail-blank-vite-port/docker-compose.yml
+  s_4318937e268074::t_3d988f6f70697d 1-6
+fixtures/sail-blank-vite-port/package.json
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-env-vite-port/package.json
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/vite-env-and-config-without-sail/vite.config.js
+  s_4318937e268074::t_3d988f6f70697d 1
+fixtures/sail-custom-clash/.env
+  s_4318937e268074::t_3d988f6f70697d 1-6
+fixtures/sail-custom-clash/docker-compose.yml
+  s_4318937e268074::t_3d988f6f70697d 1-25
+fixtures/sail-defaults/artisan
+  s_4318937e268074::t_3d988f6f70697d 1-2
+fixtures/sail-custom/expected.yaml
+  s_4318937e268074::t_3d988f6f70697d 1-25
+fixtures/sail-defaults/package.json
+  s_4318937e268074::t_3d988f6f70697d 1-7
+README.md
+  s_4318937e268074::t_d30b84ea1c3205 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "19523d653cad635181e3a075fb5aadcc7ed00727",
+  "prompts": {},
+  "sessions": {
+    "s_4318937e268074": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e58675d-fc6e-4a8c-a3d7-7013c171baf1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Edward Coleridge Smith <edcoleridgesmith@gmail.com>"
+    }
+  }
+}
