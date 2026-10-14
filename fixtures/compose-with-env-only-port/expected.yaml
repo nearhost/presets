@@ -1,0 +1,9 @@
+presets: [compose]
+routes:
+  - port: 8080
+    role: web
+    label: web
+  - port: 9100
+    role: ignore
+    label: worker (WORKER_PORT)
+advisories: []

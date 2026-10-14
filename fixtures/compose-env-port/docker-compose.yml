@@ -1,0 +1,7 @@
+services:
+  app:
+    ports:
+      - "${APP_PORT:-3000}:3000"
+  db:
+    ports:
+      - "${DB_PORT:-5432}:5432"

@@ -1,0 +1,9 @@
+presets: [compose]
+routes:
+  - port: 3100
+    role: ignore
+    label: app (APP_PORT)
+  - port: 5432
+    role: ignore
+    label: db (DB_PORT)
+advisories: []
