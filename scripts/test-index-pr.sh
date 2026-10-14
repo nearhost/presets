@@ -2,8 +2,8 @@
 # Tests scripts/index-pr.sh against a local bare repository standing in for
 # GitHub, with a fake gh that records what it was asked to do.
 # Assertions are single-quoted for eval, and the cases are called by name in
-# the loop at the end.
-# shellcheck disable=SC2016,SC2329
+# the loop at the end. Older shellcheck reports that as SC2317, newer as SC2329.
+# shellcheck disable=SC2016,SC2317,SC2329
 set -euo pipefail
 
 script="$(cd "$(dirname "$0")" && pwd)/index-pr.sh"
