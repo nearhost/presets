@@ -1,0 +1,7 @@
+presets: [compose, sail, laravel, vite]
+alias: x.test
+routes:
+  - port: 5173
+    role: web
+    label: vite (VITE_PORT)
+advisories: []

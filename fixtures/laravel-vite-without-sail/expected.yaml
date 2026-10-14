@@ -1,0 +1,6 @@
+presets: [compose, sail, laravel, vite]
+routes:
+  - port: 5175
+    role: web
+    label: Vite (vite.config)
+advisories: []

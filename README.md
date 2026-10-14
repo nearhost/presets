@@ -10,6 +10,7 @@ A preset is a data file that teaches Nearhost about one framework or tool: which
 |---|---|---|
 | Docker Compose | `nearhost/compose` | The project has a Compose file |
 | Laravel | `nearhost/laravel` | The project has an `artisan` file |
+| Laravel Sail | `nearhost/sail` | The Compose file mentions `laravel/sail`, `image: sail-` or `LARAVEL_SAIL` |
 | Vite | `nearhost/vite` | A Vite config file exists, or `package.json` depends on `vite` |
 
 ## Adding a preset
