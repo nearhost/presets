@@ -1,0 +1,14 @@
+scripts/test-index-pr.sh
+  h_13c4e797d6e9d2 5-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1f717c5eb4c886f6dc78d6bc407913c443e29d03",
+  "prompts": {},
+  "humans": {
+    "h_13c4e797d6e9d2": {
+      "author": "Edward Coleridge Smith <edcoleridgesmith@gmail.com>"
+    }
+  }
+}
