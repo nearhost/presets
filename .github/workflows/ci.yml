@@ -33,24 +33,28 @@ jobs:
       group: publish-index
       cancel-in-progress: false
     steps:
-      - uses: actions/create-github-app-token@v3
-        id: app
-        with:
-          client-id: ${{ vars.NH_APP_CLIENT_ID }}
-          private-key: ${{ secrets.NH_APP_PRIVATE_KEY }}
-          permission-contents: write
       - uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
-          token: ${{ steps.app.outputs.token }}
+          persist-credentials: false
       - uses: actions/setup-go@v5
         with:
           go-version: '1.26'
           cache: false
       - run: make install-nearhost
       - run: make index NEARHOST="$(go env GOPATH)/bin/nearhost"
+      # The token is made only now, after every build step, and only the
+      # commit step sees it. It is never written to .git/config.
+      - uses: actions/create-github-app-token@v3
+        id: app
+        with:
+          client-id: ${{ vars.NH_APP_CLIENT_ID }}
+          private-key: ${{ secrets.NH_APP_PRIVATE_KEY }}
+          permission-contents: write
       - name: Commit the index if it changed
+        env:
+          TOKEN: ${{ steps.app.outputs.token }}
         run: |
           # Publish only the commit this run's check passed. When main has
           # moved on, the run for the newer commit publishes once its own
@@ -67,4 +71,4 @@ jobs:
           git config user.email '342397698+nearhost-ci[bot]@users.noreply.github.com'
           git add index.yaml
           git commit -m 'chore: rebuild the index'
-          git push origin HEAD:main
+          git push "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
