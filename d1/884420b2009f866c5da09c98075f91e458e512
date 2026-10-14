@@ -1,0 +1,23 @@
+Makefile
+  s_4318937e268074::t_813639071488eb 18-19,21-24
+.gitignore
+  s_4318937e268074::t_813639071488eb 1
+README.md
+  s_4318937e268074::t_6b27317fab500a 34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d1884420b2009f866c5da09c98075f91e458e512",
+  "prompts": {},
+  "sessions": {
+    "s_4318937e268074": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e58675d-fc6e-4a8c-a3d7-7013c171baf1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Edward Coleridge Smith <edcoleridgesmith@gmail.com>"
+    }
+  }
+}
