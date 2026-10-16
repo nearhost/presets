@@ -1,23 +1,14 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/nearhost-mark-on-dark.svg">
-    <img src=".github/assets/nearhost-mark-on-light.svg" alt="Nearhost" width="96" height="96">
-  </picture>
-</p>
+<a href="https://nearhost.dev"><img src="https://raw.githubusercontent.com/nearhost/.github/main/assets/header-presets.png" alt="Nearhost. Run it anywhere. Open it here. The official preset registry."></a>
 
-<h1 align="center">Nearhost presets</h1>
+# Nearhost presets
 
-<p align="center">
-  The official preset registry for <a href="https://github.com/nearhost/nearhost">Nearhost</a>: what it knows about Docker Compose, Laravel, Laravel Sail and Vite, kept as data you can read.
-</p>
+The official preset registry for [Nearhost](https://github.com/nearhost/nearhost): what it knows about Docker Compose, Laravel, Laravel Sail and Vite, kept as data you can read. Nearhost is a terminal app that opens a dev server running on one of your other machines at a local `https://myapp.test`, over the SSH config you already have.
 
-<p align="center">
-  <a href="https://nearhost.dev">Website</a> ·
-  <a href="https://nearhost.dev/docs/">Docs</a> ·
-  <a href="https://github.com/nearhost/nearhost">Nearhost</a>
-</p>
+```sh
+nearhost preset registry add nearhost/presets
+```
 
----
+[Website](https://nearhost.dev) · [Docs](https://nearhost.dev/docs/getting-started/introduction/) · [Nearhost](https://github.com/nearhost/nearhost) · [Install Nearhost](https://nearhost.dev/docs/getting-started/install/)
 
 On its own, Nearhost knows one thing about a project: the port variables in its `.env`. That is enough to serve any dev server at `https://<name>.test`, but it cannot know that `5173` is a Vite dev server that the browser must reach on `localhost`, or that a Compose file publishes the web app on container port 80.
 
