@@ -1,0 +1,93 @@
+Makefile
+  s_89a63a3c1fa7d2::t_fe941e4457a921 4
+fixtures/laravel-app-url-alias/expected.yaml
+  s_89a63a3c1fa7d2::t_93c5b585b00781 1,3
+fixtures/laravel-app-url-http/.env
+  s_89a63a3c1fa7d2::t_6280a5ccff2bd7 1
+fixtures/laravel-app-url-http/expected.yaml
+  s_89a63a3c1fa7d2::t_eb7b4b6d5f527b 1-7
+fixtures/laravel-app-url-padded/expected.yaml
+  s_89a63a3c1fa7d2::t_1e3460d016fb05 1,3
+fixtures/laravel-app-url-port/expected.yaml
+  s_89a63a3c1fa7d2::t_6659db767ae0cf 1,3
+fixtures/sail-files-and-minio-url/.env
+  s_89a63a3c1fa7d2::t_c1e63a9c6f2ca3 1-6
+fixtures/sail-files-and-minio-url/artisan
+  s_89a63a3c1fa7d2::t_d62375939ec5a9 1-2
+fixtures/sail-files-and-minio-url/docker-compose.yml
+  s_89a63a3c1fa7d2::t_a768cc4c866e00 2-5,7-17
+fixtures/sail-files-and-minio-url/expected.yaml
+  s_89a63a3c1fa7d2::t_389b73e90a7b79 1-17
+fixtures/sail-files-and-minio-url/package.json
+  s_89a63a3c1fa7d2::t_649e3df9dd0d04 1-7
+fixtures/sail-files-and-minio-url/vite.config.js
+  s_89a63a3c1fa7d2::t_d349fe67be4b70 1-11
+fixtures/sail-host-is-alias/.env
+  s_89a63a3c1fa7d2::t_b5e6d999b59f73 1-5
+fixtures/sail-host-is-alias/artisan
+  s_89a63a3c1fa7d2::t_5d4edd3bdb250e 1-2
+fixtures/sail-host-is-alias/docker-compose.yml
+  s_89a63a3c1fa7d2::t_2989fa31479666 2-5,7-13
+fixtures/sail-host-is-alias/expected.yaml
+  s_89a63a3c1fa7d2::t_f457aa1b3f0231 1-14
+fixtures/sail-host-is-alias/package.json
+  s_89a63a3c1fa7d2::t_783b61687110bb 1-7
+fixtures/sail-host-is-alias/vite.config.js
+  s_89a63a3c1fa7d2::t_95c37032b9f741 1-11
+fixtures/sail-ip-and-bare-name/docker-compose.yml
+  s_89a63a3c1fa7d2::t_4c35bada112ad9 9
+fixtures/sail-ip-and-bare-name/expected.yaml
+  s_89a63a3c1fa7d2::t_8a56088d6e6901 11
+fixtures/sail-localhost-defaults/docker-compose.yml
+  s_89a63a3c1fa7d2::t_f51e2dfdba12bf 9
+fixtures/sail-localhost-defaults/expected.yaml
+  s_89a63a3c1fa7d2::t_f7a7a67c603019 11
+fixtures/sail-minio-url/docker-compose.yml
+  s_89a63a3c1fa7d2::t_ac078a1b63168d 17
+fixtures/sail-minio-url/expected.yaml
+  s_89a63a3c1fa7d2::t_9be1eaf32f57a9 10-12
+fixtures/sail-no-forward-ports/.env
+  s_89a63a3c1fa7d2::t_4753c798879d01 1-6
+fixtures/sail-no-forward-ports/artisan
+  s_89a63a3c1fa7d2::t_38ffabbe5360a5 1-2
+fixtures/sail-no-forward-ports/docker-compose.yml
+  s_89a63a3c1fa7d2::t_bd19ce366a7136 2-5,7-12
+fixtures/sail-no-forward-ports/expected.yaml
+  s_89a63a3c1fa7d2::t_b29258ac6cf026 1-10
+fixtures/sail-no-forward-ports/package.json
+  s_89a63a3c1fa7d2::t_43f1cd5057129c 1-7
+fixtures/sail-no-forward-ports/vite.config.js
+  s_89a63a3c1fa7d2::t_5e21a931814975 1-11
+fixtures/sail-reverb-minio/docker-compose.yml
+  s_89a63a3c1fa7d2::t_594041c61fe742 9,18
+fixtures/sail-reverb-minio/expected.yaml
+  s_89a63a3c1fa7d2::t_e9e5e194e3c731 12,14-16
+fixtures/sail-url-ports-ignored/.env
+  s_89a63a3c1fa7d2::t_1ac492f81ca1a5 1-6
+fixtures/sail-url-ports-ignored/artisan
+  s_89a63a3c1fa7d2::t_759d1dde6af87e 1-2
+fixtures/sail-url-ports-ignored/docker-compose.yml
+  s_89a63a3c1fa7d2::t_2209a226b32e81 1-18
+fixtures/sail-url-ports-ignored/expected.yaml
+  s_89a63a3c1fa7d2::t_ec4abb7e9a4098 1-21
+fixtures/sail-url-ports-ignored/package.json
+  s_89a63a3c1fa7d2::t_702cf6faeb31d5 1-7
+fixtures/sail-url-ports-ignored/vite.config.js
+  s_89a63a3c1fa7d2::t_c32e58f201f098 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "13025d1d5b45ea4ee32383e8ba3f38bf4d991a5d",
+  "prompts": {},
+  "sessions": {
+    "s_89a63a3c1fa7d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ade858e5-1767-41c6-b0b0-fdd74aba68cf",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Edward Coleridge Smith <edcoleridgesmith@gmail.com>"
+    }
+  }
+}
