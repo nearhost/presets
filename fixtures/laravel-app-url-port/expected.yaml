@@ -1,0 +1,10 @@
+presets: [compose, laravel]
+alias: myapp.test
+routes:
+  - port: 8080
+    role: web
+    label: app
+advisories:
+  - id: app-url
+    message: 'APP_URL is "https://myapp.test:8443". Generated links will use it, so set it to one of the project''s addresses, with https and no port.'
+    snippet: APP_URL=https://myapp.test

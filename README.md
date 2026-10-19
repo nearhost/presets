@@ -28,8 +28,8 @@ That knowledge lives here, as presets. A preset is a short YAML file that tells 
 | Preset | Turns on when | What it adds |
 | --- | --- | --- |
 | `nearhost/compose` | The project has a Compose file | A route for every TCP port the Compose file publishes, labelled with its service. A service on container port 80 becomes the web route. |
-| `nearhost/laravel` | The project has an `artisan` file | Advice when `APP_URL` is not `https://<alias>`, since generated links use it. |
-| `nearhost/sail` | The Compose file mentions `laravel/sail`, a `sail-` image (quoted or not) or `LARAVEL_SAIL` | Compose's published ports, with the Vite dev server forwarded to `localhost` through `VITE_PORT` so assets and hot reload load. Vite advice that fits a container: set `VITE_PORT` in `.env`. |
+| `nearhost/laravel` | The project has an `artisan` file | Advice when `APP_URL` is not one of the project's addresses with `https` and no port, since generated links use it. |
+| `nearhost/sail` | The Compose file mentions `laravel/sail`, a `sail-` image (quoted or not) or `LARAVEL_SAIL` | Compose's published ports, with the Vite dev server forwarded to `localhost` through `VITE_PORT` so assets and hot reload load. Vite advice that fits a container: set `VITE_PORT` in `.env`. The hosts in `APP_URL`, `REVERB_HOST` and `FILES_URL` or `MINIO_URL`, served on the ports that carry them. |
 | `nearhost/vite` | A `vite.config.*` file exists, or `package.json` depends on `vite` | The dev server port from `server.port` as a route. Advice when the port is left at the default 5173, which other Vite projects also use, and when `server.allowedHosts` would reject the alias. |
 
 Presets combine. On a Sail project with a Vite frontend, `sail`, `laravel` and `vite` all apply, and `sail` adjusts what `vite` would say for a server that runs in a container.
@@ -123,7 +123,7 @@ advisories:
 
 | Key | Required | Meaning |
 | --- | --- | --- |
-| `schema` | yes | The preset format version, `1` |
+| `schema` | yes | The preset format version, `1` or `2`. Schema 2 adds `routes[].hosts` and the host expressions |
 | `name` | yes | Lowercase letters, digits and hyphens; the file name without `.yaml` |
 | `title` | yes | The name shown in suggestions, such as `This looks like a Vite project` |
 | `description` | no | One sentence for `preset list` |
@@ -132,11 +132,13 @@ advisories:
 | `compose` | no | `ports` asks Nearhost for the Compose file's published ports |
 | `ports` | no | Port variables to label: `var`, `label`, `role` (`ignore` or `loopback`) and `web` (`preferred` or `fallback`) |
 | `facts` | no | Values scanned from the first file in `scan` that exists, with an RE2 `regex` and an `as` type |
-| `routes` | no | Routes computed from facts: `id`, `when`, `port`, `label`, `role` and `web` |
+| `routes` | no | Routes computed from facts: `id`, `when`, `port`, `label`, `role`, `web` and, in schema 2, `hosts` |
 | `suppress` | no | Ids of routes and advisories from earlier presets to remove |
 | `advisories` | no | Advice to show: `id`, `when`, `message` and `snippet`, where `{{ expr }}` is filled in |
 
 A preset never sets the web role itself. It hints with `web: preferred` or `web: fallback`, and Nearhost chooses. A later preset replaces an earlier route or advisory by using the same `id`, or removes it with `suppress`. That is how `sail` changes Vite's advice without `vite` knowing Sail exists.
+
+A route's `hosts` is an expression that gives a list of names, such as `[url_host(env["APP_URL"])]`, that the route's port is served at besides the project's alias. A route with hosts becomes a web route. Nearhost never serves `localhost`, IP addresses or names without a dot from a preset, and it drops duplicates. Inferred hosts are approved before they are served.
 
 A fact's `as` is `int`, `string` or `quoted_list`, which read the first capture group, or `bool`, which says whether the pattern matched. When the file or the match is missing, the fact is `0`, `""`, `[]` or `false`.
 
@@ -151,7 +153,12 @@ A fact's `as` is `int`, `string` or `quoted_list`, which read the first capture 
 | `facts` | routes, advisories | This preset's facts |
 | `active(name)` | routes, advisories | Whether the named preset applies |
 | `presets` | routes, advisories | The facts of each preset that ran earlier, by name |
+| `url_host(s)` | routes, advisories | The lowercase host of a URL or of a bare `host` or `host:port`, or `""` |
+| `url_port(s)` | routes, advisories | The port written in a URL or after a host, or `0` |
+| `env_port(name, default)` | routes, advisories | The port in the environment variable `name`, or `default` when it is missing or not a port |
 | `alias` | advisories | The project's hostname, such as `myapp.test` |
+| `hosts` | advisories | Every name the project is served at, its alias first |
+| `serves(name)` | advisories | Whether the project is served at `name` |
 | `free_port(n)` | advisories | The lowest port from `n` up that no enabled project forwards to `localhost` |
 | `host_in(host, list)` | advisories | Whether `host` is in `list`, where an entry starting with `.` matches a domain suffix |
 

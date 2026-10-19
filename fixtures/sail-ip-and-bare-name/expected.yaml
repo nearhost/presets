@@ -1,0 +1,15 @@
+presets: [compose, sail, laravel, vite]
+routes:
+  - port: 80
+    role: web
+    label: laravel.test (APP_PORT)
+  - port: 5180
+    role: loopback
+    label: Vite (VITE_PORT)
+  - port: 8080
+    role: ignore
+    label: reverb (FORWARD_REVERB_PORT)
+advisories:
+  - id: app-url
+    message: 'APP_URL is "http://127.0.0.1:8000". Generated links will use it, so set it to one of the project''s addresses, with https and no port.'
+    snippet: APP_URL=https://sail-ip-and-bare-name.test

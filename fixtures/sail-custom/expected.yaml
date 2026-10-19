@@ -21,5 +21,5 @@ routes:
     label: laravel.test (APP_PORT)
 advisories:
   - id: app-url
-    message: 'APP_URL is "http://localhost". Generated links will use it, so set it to the alias.'
+    message: 'APP_URL is "http://localhost". Generated links will use it, so set it to one of the project''s addresses, with https and no port.'
     snippet: APP_URL=https://myapp.test
