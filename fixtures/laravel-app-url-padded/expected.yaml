@@ -1,7 +1,4 @@
-presets: [compose, laravel]
+presets: [laravel]
 alias: myapp.test
-routes:
-  - port: 8080
-    role: web
-    label: app
+routes: []
 advisories: []

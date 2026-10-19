@@ -1,7 +1,7 @@
 # The nearhost binary that checks the presets. CI builds NEARHOST_COMMIT.
 NEARHOST ?= nearhost
 # Raise this when the preset or index format changes in nearhost/nearhost.
-NEARHOST_COMMIT := 504280b2e0a46d3a2c090940284a6dc3afcdb170
+NEARHOST_COMMIT := e53cf19c4b6f99f14d55160178e2f393a74c46cc
 
 .PHONY: check validate test index install-nearhost
 

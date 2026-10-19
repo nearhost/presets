@@ -9,8 +9,11 @@ routes:
     label: Vite (VITE_PORT)
   - port: 8080
     role: web
-    label: reverb (FORWARD_REVERB_PORT)
+    label: laravel.test (FORWARD_REVERB_PORT)
     hosts: [ws.local.x.io]
+  - port: 8900
+    role: ignore
+    label: minio (FORWARD_MINIO_CONSOLE_PORT)
   - port: 9000
     role: web
     label: minio (FORWARD_MINIO_PORT)

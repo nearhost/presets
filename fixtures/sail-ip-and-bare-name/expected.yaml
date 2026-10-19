@@ -8,7 +8,7 @@ routes:
     label: Vite (VITE_PORT)
   - port: 8080
     role: ignore
-    label: reverb (FORWARD_REVERB_PORT)
+    label: laravel.test (FORWARD_REVERB_PORT)
 advisories:
   - id: app-url
     message: 'APP_URL is "http://127.0.0.1:8000". Generated links will use it, so set it to one of the project''s addresses, with https and no port.'
