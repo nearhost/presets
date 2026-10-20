@@ -1,0 +1,49 @@
+presets/vite.yaml
+  s_97d6a9a0f6828b::t_fca89e21bc5221 8-9,12,14,17,46
+presets/sail.yaml
+  s_97d6a9a0f6828b::t_fca89e21bc5221 39,41-42
+fixtures/vite-port-from-unset-env/vite.config.js
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1-6
+fixtures/vite-shorthand-port/vite.config.js
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1-4
+fixtures/vite-commented-port/expected.yaml
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1-3
+  s_97d6a9a0f6828b::t_d9c6ea107b7d9a 4-13
+fixtures/vite-commented-port/package.json
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1
+fixtures/vite-shorthand-port/expected.yaml
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1-4
+fixtures/sail-compose-dash-default-vite-port/package.json
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1
+fixtures/vite-port-from-unset-env/package.json
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1
+fixtures/vite-commented-port/vite.config.js
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1-6
+fixtures/sail-compose-dash-default-vite-port/docker-compose.yml
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1-6
+fixtures/vite-port-from-unset-env/expected.yaml
+  s_97d6a9a0f6828b::t_d9c6ea107b7d9a 4-13
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1-3
+fixtures/vite-shorthand-port/package.json
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1
+fixtures/sail-compose-dash-default-vite-port/expected.yaml
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1-10
+fixtures/sail-compose-dash-default-vite-port/vite.config.js
+  s_97d6a9a0f6828b::t_55253a9dab1f57 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7e225ec0a4c78f505eb68ac48f12ab8e0470c433",
+  "prompts": {},
+  "sessions": {
+    "s_97d6a9a0f6828b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "57996611-a4a8-4725-97ac-1660bfc58ed8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Edward Coleridge Smith <edcoleridgesmith@gmail.com>"
+    }
+  }
+}
