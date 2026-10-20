@@ -1,4 +1,7 @@
 presets: [vite]
 alias: x.test
+# No route: the port fact reads only a literal number, and Nearhost cannot
+# tell what the variable in server: { port } holds. sets_port still sees
+# that a port is set, so there is no advisory.
 routes: []
 advisories: []
