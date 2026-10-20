@@ -1,0 +1,10 @@
+presets: [compose, sail, laravel, vite]
+routes:
+  - port: 80
+    role: web
+    label: laravel.test (APP_PORT)
+    hosts: [app.local.x.io]
+  - port: 5180
+    role: loopback
+    label: Vite (VITE_PORT)
+advisories: []

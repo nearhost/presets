@@ -1,7 +1,7 @@
-schema: 1
+schema: 2
 name: sail
 title: Laravel Sail
-description: Forwards the Vite dev server that Laravel Sail runs inside its container.
+description: Forwards the Vite dev server that Laravel Sail runs, and serves the hosts in APP_URL, REVERB_HOST and FILES_URL or MINIO_URL.
 after: [vite]
 detect: >-
   compose.contains("laravel/sail") || compose.contains("image: sail-")
@@ -13,6 +13,23 @@ ports:
   - var: VITE_PORT
     label: Vite
     role: loopback
+
+routes:
+  - id: app-hosts
+    when: '"APP_URL" in env'
+    port: env_port("APP_PORT", 80)
+    label: App
+    hosts: '[url_host(env["APP_URL"])]'
+  - id: reverb-hosts
+    when: '"REVERB_HOST" in env && ("FORWARD_REVERB_PORT" in env || compose.contains("FORWARD_REVERB_PORT"))'
+    port: env_port("FORWARD_REVERB_PORT", 8080)
+    label: Reverb
+    hosts: '[url_host(env["REVERB_HOST"])]'
+  - id: minio-hosts
+    when: '("FILES_URL" in env || "MINIO_URL" in env) && ("FORWARD_MINIO_PORT" in env || compose.contains("FORWARD_MINIO_PORT"))'
+    port: env_port("FORWARD_MINIO_PORT", 9000)
+    label: MinIO
+    hosts: '("FILES_URL" in env ? [url_host(env["FILES_URL"])] : []) + ("MINIO_URL" in env ? [url_host(env["MINIO_URL"])] : [])'
 
 suppress: [vite-config-port, allowed-hosts]
 
