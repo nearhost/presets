@@ -33,10 +33,15 @@ routes:
 
 suppress: [vite-config-port, allowed-hosts]
 
+# laravel-vite-plugin starts Vite on server.port, else VITE_PORT from .env or
+# the environment, else 5173. A Compose environment entry for VITE_PORT, in
+# map or list form, sets the environment; a ports default only maps the port.
 advisories:
   - id: vite-default-port
     when: >-
-      active("vite") && presets["vite"].port == 0
+      active("vite") && !(presets["vite"].sets_port && !presets["vite"].port_from_vite_port)
       && !("VITE_PORT" in env && env["VITE_PORT"].trim() != "")
+      && !(compose.matches("(?m)^\\s*-?\\s*[\x27\"]?VITE_PORT\\s*[:=]\\s*[\x27\"]?(?:\\$\\{VITE_PORT:?-)?[0-9]+")
+        && !compose.matches("(?m)^\\s*-?\\s*[\x27\"]?VITE_PORT\\s*[:=]\\s*[\x27\"]?(?:\\$\\{VITE_PORT:?-)?5173\\b"))
     message: Vite will use the default port 5173, which other Vite projects also use. Set VITE_PORT in .env so projects can run side by side.
     snippet: VITE_PORT={{ free_port(5173) }}
