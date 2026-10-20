@@ -1,0 +1,36 @@
+fixtures/sail-compose-environment-vite-port/docker-compose.yml
+  s_97d6a9a0f6828b::t_bd51128c621d9c 1-8
+fixtures/sail-compose-environment-vite-port-5173/docker-compose.yml
+  s_97d6a9a0f6828b::t_bd51128c621d9c 1-8
+fixtures/sail-compose-environment-vite-port-5173/expected.yaml
+  s_97d6a9a0f6828b::t_553c337047959c 14
+  s_97d6a9a0f6828b::t_bd51128c621d9c 1-13
+fixtures/sail-compose-environment-vite-port/vite.config.js
+  s_97d6a9a0f6828b::t_bd51128c621d9c 1
+fixtures/sail-compose-environment-vite-port/package.json
+  s_97d6a9a0f6828b::t_bd51128c621d9c 1
+fixtures/sail-compose-environment-vite-port-5173/vite.config.js
+  s_97d6a9a0f6828b::t_bd51128c621d9c 1
+fixtures/sail-compose-environment-vite-port-5173/package.json
+  s_97d6a9a0f6828b::t_bd51128c621d9c 1
+presets/sail.yaml
+  s_97d6a9a0f6828b::t_553c337047959c 36-38,44-45
+fixtures/sail-compose-environment-vite-port/expected.yaml
+  s_97d6a9a0f6828b::t_bd51128c621d9c 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cc6b4397862d52ed455b45cf8377aa142da1fdc0",
+  "prompts": {},
+  "sessions": {
+    "s_97d6a9a0f6828b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "57996611-a4a8-4725-97ac-1660bfc58ed8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Edward Coleridge Smith <edcoleridgesmith@gmail.com>"
+    }
+  }
+}
