@@ -138,7 +138,7 @@ advisories:
 
 A preset never sets the web role itself. It hints with `web: preferred` or `web: fallback`, and Nearhost chooses. A later preset replaces an earlier route or advisory by using the same `id`, or removes it with `suppress`. That is how `sail` changes Vite's advice without `vite` knowing Sail exists.
 
-A route's `hosts` is an expression that gives a list of names, such as `[url_host(env["APP_URL"])]`, that the route's port is served at besides the project's alias. A route with hosts becomes a web route. Nearhost never serves `localhost`, IP addresses or names without a dot from a preset, and it drops duplicates. Inferred hosts are approved before they are served.
+A route's `hosts` is an expression that gives a list of names, such as `[url_host(env["APP_URL"])]`, that the route's port is served at. A route with hosts becomes a web route. The list may name the project's alias, which is served only on the primary web route, so it is dropped from any other. Nearhost never serves `localhost`, IP addresses or names without a dot from a preset, and it drops duplicates. Inferred hosts are approved before they are served.
 
 A fact's `as` is `int`, `string` or `quoted_list`, which read the first capture group, or `bool`, which says whether the pattern matched. When the file or the match is missing, the fact is `0`, `""`, `[]` or `false`.
 
