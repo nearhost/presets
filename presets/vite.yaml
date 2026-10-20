@@ -5,13 +5,16 @@ description: Finds the Vite dev server port and checks its host settings.
 detect: file("vite.config.js", "vite.config.ts", "vite.config.mjs", "vite.config.mts", "vite.config.cjs") || pkg("vite")
 
 facts:
+  # The key opens the block or follows a comma or a line break, so a
+  # commented-out port does not count; sets_port reads it the same way.
   port:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
-    regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?(?:\b|[''"])port[''"]?\s*:\s*(\d+)'
+    regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?[,\n])?\s*[''"]?port[''"]?\s*:\s*(\d+)'
     as: int
+  # server.port set to anything, shorthand { port } included.
   sets_port:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
-    regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?(?:\b|[''"])port[''"]?\s*:'
+    regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?[,\n])?\s*[''"]?port[''"]?\s*[:,}]'
     as: bool
   allowed_hosts:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
@@ -40,7 +43,7 @@ routes:
 advisories:
   - id: vite-default-port
     when: >-
-      !facts.sets_port
+      !(facts.sets_port && !facts.reads_vite_port)
       && !(facts.reads_vite_port && "VITE_PORT" in env && env["VITE_PORT"].trim() != "")
     message: Vite will use the default port 5173, which other Vite projects also use. Set server.port in the Vite config so projects can run side by side.
     snippet: |
