@@ -1,0 +1,14 @@
+presets: [compose, sail, vite]
+alias: x.test
+routes:
+  - port: 80
+    role: web
+    label: laravel.test (APP_PORT)
+  - port: 5173
+    role: loopback
+    label: Vite (VITE_PORT)
+# The environment sets VITE_PORT, but to 5173, the default.
+advisories:
+  - id: vite-default-port
+    message: 'Vite will use the default port 5173, which other Vite projects also use. Set VITE_PORT in .env so projects can run side by side.'
+    snippet: VITE_PORT=5174

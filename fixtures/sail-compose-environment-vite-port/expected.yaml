@@ -1,0 +1,12 @@
+presets: [compose, sail, vite]
+alias: x.test
+routes:
+  - port: 80
+    role: web
+    label: laravel.test (APP_PORT)
+  - port: 5176
+    role: loopback
+    label: Vite (VITE_PORT)
+# The container's environment sets VITE_PORT to 5176, which
+# laravel-vite-plugin reads.
+advisories: []
