@@ -36,7 +36,8 @@ suppress: [vite-config-port, allowed-hosts]
 advisories:
   - id: vite-default-port
     when: >-
-      active("vite") && presets["vite"].port == 0
+      active("vite") && !presets["vite"].sets_port
       && !("VITE_PORT" in env && env["VITE_PORT"].trim() != "")
+      && !(compose.matches("\\$\\{VITE_PORT:-[0-9]+\\}") && !compose.contains("${VITE_PORT:-5173}"))
     message: Vite will use the default port 5173, which other Vite projects also use. Set VITE_PORT in .env so projects can run side by side.
     snippet: VITE_PORT={{ free_port(5173) }}

@@ -9,6 +9,10 @@ facts:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
     regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?(?:\b|[''"])port[''"]?\s*:\s*(\d+)'
     as: int
+  sets_port:
+    scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
+    regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?(?:\b|[''"])port[''"]?\s*:'
+    as: bool
   allowed_hosts:
     scan: [vite.config.js, vite.config.ts, vite.config.mjs, vite.config.mts, vite.config.cjs]
     regex: '(?:\b|[''"])server[''"]?\s*:\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*?(?:\b|[''"])allowedHosts[''"]?\s*:\s*\[([^\]]*)\]'
@@ -36,7 +40,7 @@ routes:
 advisories:
   - id: vite-default-port
     when: >-
-      facts.port == 0
+      !facts.sets_port
       && !(facts.reads_vite_port && "VITE_PORT" in env && env["VITE_PORT"].trim() != "")
     message: Vite will use the default port 5173, which other Vite projects also use. Set server.port in the Vite config so projects can run side by side.
     snippet: |

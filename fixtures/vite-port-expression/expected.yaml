@@ -1,0 +1,4 @@
+presets: [vite]
+alias: x.test
+routes: []
+advisories: []
